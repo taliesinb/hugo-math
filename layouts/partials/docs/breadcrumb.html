@@ -1,0 +1,11 @@
+<h2 class="book-brand">
+{{ template "bc" .Page.CurrentSection }}
+</h2>
+
+{{ define "bc" }}
+  {{ if .IsHome }}
+    <a href="/">{{ partial "docs/home-icon" . }}</a>
+  {{ else }}
+    {{ template "bc" .Parent  }} / <a href="{{ .Permalink }}">{{ .Title }}</a>
+  {{ end }}
+{{ end }}

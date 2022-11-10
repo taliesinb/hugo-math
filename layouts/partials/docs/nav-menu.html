@@ -1,0 +1,78 @@
+<nav>
+
+{{- partial "docs/inject/menu-before" . -}}
+
+{{/*
+$MenuRoot controls the origin of the filetree menu.
+as commonly done it is first picked up from the MenuRoot parameter of the current page, if any (this should be used sparingly if at all)
+then it is picked up from the .Type of the current page, which is the sensible default behavior.
+for the home page, it is picked up from .Site.HomePageMenuType, or / if that doesn't exist
+*/}}
+
+{{- $HomePageMenuRoot := (default "/" .Site.Params.HomePageMenuRoot) -}}
+{{- $MenuRoot := ( cond .IsHome $HomePageMenuRoot .Type ) -}}
+{{- $MenuRoot = ( default $MenuRoot .Params.MenuRoot ) -}}
+{{- $MenuRootPage := .Site.GetPage $MenuRoot -}}
+
+{{/*
+$MenuRoot controls the origin of the filetree menu.
+as commonly done it is first picked up from the MenuRoot parameter of the current page, if any (this should be used sparingly if at all)
+then it is picked up from the .Type of the current page, which is the sensible default behavior.
+for the home page, it is picked up from .Site.HomePageMenuType, or / if that doesn't exist
+*/}}
+
+{{- if (eq (lower $HomePageMenuRoot) (lower $MenuRoot)) }}
+  {{- partial "docs/brand" . -}}
+{{- else -}}
+  {{- partial "docs/breadcrumb" . -}}
+{{- end -}}
+
+{{- template "render-menu-section" (dict "Section" $MenuRootPage "CurrentPage" $) -}}
+
+{{- define "render-menu-section" -}}
+  <ul>
+    {{ range (where .Section.Pages "Params.bookhidden" "ne" true) }}
+      {{- if .IsSection -}}
+        <li {{- if .Params.BookFlatSection }} class="book-section-flat" {{ end -}}>
+          {{- template "render-menu-page" (dict "Page" . "CurrentPage" $.CurrentPage) -}}
+          {{- template "render-menu-section" (dict "Section" . "CurrentPage" $.CurrentPage) -}}
+        </li>
+      {{- else if and .IsPage .Content -}}
+        <li>{{ template "render-menu-page" (dict "Page" . "CurrentPage" $.CurrentPage) }}</li>
+      {{ end }}
+    {{- end -}}
+  </ul>
+{{- end -}}
+
+{{/*
+TODO: BookCollapseSection should become CollapseSection
+all book prefixes should be removed
+*/}}
+
+{{- define "render-menu-page" -}}
+  {{- $current := eq .CurrentPage .Page -}}
+  {{- $ancestor := .Page.IsAncestor .CurrentPage -}}
+  {{- if .Page.Params.BookCollapseSection -}}
+    <input type="checkbox" id="section-{{ md5 .Page }}" class="toggle" {{ if or $current $ancestor }}checked{{ end }} />
+    <label for="section-{{ md5 .Page }}" class="flex justify-between">
+      <a {{ if .Page.Content }}href="{{ .Page.RelPermalink }}"{{ else }}role="button"{{ end }} class="{{ if $current }}active{{ end }}">
+        {{- partial "docs/title" .Page -}}
+      </a>
+    </label>
+  {{- else if .Page.Content -}}
+    <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }}">
+      {{- partial "docs/title" .Page -}}
+    </a>
+  {{- else -}}
+    <span>{{- partial "docs/title" .Page -}}</span>
+  {{- end -}}
+{{- end -}}
+
+{{- partial "docs/inject/menu-after" . -}}
+
+</nav>
+<!-- Restore menu position as soon as possible to avoid flickering -->
+{{- $script := resources.Get "menu-reset.js" | resources.Minify -}}
+{{- with $script.Content -}}
+<script>{{ . | safeJS }}</script>
+{{- end -}}
