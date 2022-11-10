@@ -353,6 +353,26 @@ body[dir="rtl"] .book-menu {
     }
   }
 }
+@media screen and (min-width:65rem) and (max-width:70rem){
+    .book-page{
+        font-size:95%
+    }
+}
+@media screen and (min-width:60rem) and (max-width:65rem){
+    .book-page{
+        font-size:90%
+    }
+}
+@media screen and (min-width:51rem) and (max-width:60rem){
+    .book-page{
+        font-size:80%
+    }
+}
+@media screen and (min-width:80rem){
+    .book-page,.book-menu .book-menu-content,.book-toc .book-toc-content{
+        padding:2rem 1rem
+    }
+}
 
 // Extra space for big screens
 @media screen and (min-width: $container-max-width) {
