@@ -241,17 +241,20 @@ You can specify additional params in the front matter of individual pages:
 # Set type to 'docs' if you want to render page outside of configured section or if you render section other than 'docs'
 type = 'docs'
 
-# Set page weight to re-arrange items in file-tree menu (if BookMenuBundle not set)
+# Set page weight to re-arrange items in file-tree menu
 weight = 10
 
-# (Optional) Set to 'true' to mark page as flat section in file-tree menu (if BookMenuBundle not set)
+# (Optional) Set to 'true' to mark page as flat section in file-tree menu
 bookFlatSection = false
+# TODO: rename to flatInMenu
 
 # (Optional) Set to hide nested sections or pages at that level. Works only with file-tree menu mode
 bookCollapseSection = true
+# TODO: rename to togglerInMenu
 
-# (Optional) Set true to hide page or section from side menu (if BookMenuBundle not set)
+# (Optional) Set true to hide page or section from side menu
 bookHidden = false
+# TODO: rename to hiddenInMenu
 
 # (Optional) Set 'false' to hide ToC from page
 bookToC = true
@@ -261,9 +264,6 @@ bookComments = true
 
 # (Optional) Set to 'false' to exclude page from search index.
 bookSearchExclude = true
-
-# (Optional) Set explicit href attribute for this page in a menu (if BookMenuBundle not set)
-bookHref = ''
 ```
 
 ### Partials
