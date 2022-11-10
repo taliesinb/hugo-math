@@ -1,23 +1,23 @@
-{{ with .Date }}
+{{- with .Date -}}
   <h5>{{ partial "docs/date" (dict "Date" . "Format" $.Site.Params.BookDateFormat) }}</h5>
-{{ end }}
+{{- end -}}
 
-{{ range $taxonomy, $_ := .Site.Taxonomies }}
-  {{ with $terms := $.GetTerms $taxonomy }}
+{{- range $taxonomy, $_ := .Site.Taxonomies }}
+  {{- with $terms := $.GetTerms $taxonomy }}
   <div>
-    {{ range $n, $term := $terms }}{{ if $n }}, {{ end }}
+    {{- range $n, $term := $terms -}}{{- if $n -}}, {{- end -}}
       <a href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>
-    {{- end }}
+    {{- end -}}
   </div>
-  {{ end }}
-{{ end }}
+  {{- end -}}
+{{- end -}}
 
-{{ if .Params.image }}
+{{- if .Params.image -}}
 <p>
-  {{ with .Resources.GetMatch .Params.image }}
+  {{- with .Resources.GetMatch .Params.image -}}
     <img src={{ .RelPermalink }} />
-  {{ else }}
+  {{- else -}}
     <img src={{ .Params.image | relURL }} />
-  {{ end }}
+  {{- end -}}
 </p>
-{{ end }}
+{{- end -}}

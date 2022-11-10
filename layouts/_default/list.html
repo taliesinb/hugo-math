@@ -1,22 +1,20 @@
 {{ define "main" }}
-  {{ range sort .Paginator.Pages }}
+  {{- range sort .Paginator.Pages -}}
   <article class="markdown book-post">
-    <h2>
-      <a href="{{ .RelPermalink }}">{{ partial "docs/title.html" . }}</a>
-    </h2>
-    {{ partial "docs/post-meta" . }}
+    <h2><a href="{{ .RelPermalink }}">{{ partial "docs/title.html" . }}</a></h2>
+    {{- partial "docs/post-meta" . -}}
     <p>
       {{- .Summary -}}
-      {{ if .Truncated }}
-        <a href="{{ .RelPermalink }}">...</a>
-      {{ end }}
+      {{- if .Truncated -}}
+      <a href="{{ .RelPermalink }}">...</a>
+      {{- end -}}
     </p>
   </article>
-  {{ end }}
+  {{- end -}}
 
   {{ template "_internal/pagination.html" . }}
 {{ end }}
 
 {{ define "toc" }}
-  {{ partial "docs/taxonomy" . }}
+  {{- partial "docs/taxonomy" . -}}
 {{ end }}
