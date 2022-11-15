@@ -71,6 +71,15 @@
     margin-right: auto;
   }
 
+  img.SmallFrame{
+    max-width:300px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:0%;
+    padding:8px;
+    border:1px solid lightgrey
+  }
+
   code {
     padding: 0 $padding-4;
     background: var(--gray-200);
@@ -92,6 +101,14 @@
 
   p {
     word-wrap:break-word;
+  }
+
+  .katex {
+    font-size: 1.15em!important
+  }
+
+  .katex-html {
+    white-space: nowrap
   }
 
   blockquote {
@@ -116,6 +133,12 @@
     border-collapse: collapse;
     margin-top: $padding-16;
     margin-bottom: $padding-16;
+    font-size: 90%;
+
+    th {
+      background: var(--gray-100);
+      text-align: left
+    }
 
     tr th,
     tr td {
@@ -126,6 +149,11 @@
     tr:nth-child(2n) {
       background: var(--gray-100);
     }
+
+  }
+
+  table.table-no-header thead tr {
+    display:none!important
   }
 
   hr {
