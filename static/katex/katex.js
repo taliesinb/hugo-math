@@ -1090,6 +1090,8 @@ var DocumentFragment = /*#__PURE__*/function () {
     "771": [0, 0.9, 0, 0, 2.33334],
     "989": [0.08167, 0.58167, 0, 0, 0.77778],
     "1008": [0, 0.43056, 0.04028, 0, 0.66667],
+    "65108": [0.19444, 0.44444, 0, 0, 0.31944],
+    "65109": [0, 0.44444, 0, 0, 0.31944],
     "8245": [0, 0.54986, 0, 0, 0.275],
     "8463": [0, 0.68889, 0, 0, 0.54028],
     "8487": [0, 0.68889, 0, 0, 0.72222],
@@ -4632,7 +4634,9 @@ defineSymbol(math, ams, rel, "\u2AB5", "\\precneqq", true);
 defineSymbol(math, ams, rel, "\u2AB6", "\\succneqq", true);
 defineSymbol(math, ams, rel, "\uE016", "\\@nsubseteqq");
 defineSymbol(math, ams, bin, "\u22B4", "\\unlhd");
-defineSymbol(math, ams, bin, "\u22B5", "\\unrhd"); // AMS Negated Arrows
+defineSymbol(math, ams, bin, "\u22B5", "\\unrhd");
+defineSymbol(math, ams, rel, "\uFE54", "\\bbsemicolon", true);
+defineSymbol(math, ams, rel, "\uFE55", "\\bbcolon", true); // AMS Negated Arrows
 
 defineSymbol(math, ams, rel, "\u219A", "\\nleftarrow", true);
 defineSymbol(math, ams, rel, "\u219B", "\\nrightarrow", true);
