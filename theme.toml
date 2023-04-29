@@ -14,3 +14,9 @@ min_version = "0.68"
 [author]
   name = "Alex Shpak"
   homepage = "https://github.com/alex-shpak/"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.goldmark.parser.attribute]
+  block = true
