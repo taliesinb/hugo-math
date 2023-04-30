@@ -91,4 +91,18 @@ body {
 
 code {
   font-family: 'FiraCode', monospace;
+  //line-height: 1;
+  letter-spacing: normal;
+}
+
+pre {
+  font-family: 'FiraCode', monospace;
+  //line-height: 1;
+  letter-spacing: normal;
+}
+
+.markdown td pre {
+  border-radius: 0rem;
+  padding: 0rem;
+  background: none;
 }
