@@ -108,6 +108,10 @@
     word-wrap:break-word;
   }
 
+  .mathFont { font-family: "KaTeX_Math"; font-size: 1.15em!important }
+  .blackboardFont { font-family: "KaTeX_AMS"; font-size: 1.15em!important }
+  .typewriterFont { font-family: "KaTeX_Typewriter"; font-size: 1.15em!important }
+
   .katex {
     font-size: 1.15em!important
   }
